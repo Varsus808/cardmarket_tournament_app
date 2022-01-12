@@ -19,7 +19,15 @@ pip install -r requirements.txt
 ## Vor dem ersten gebrauch
 
 Exportiere deine Deckliste von der Website deiner Wahl (Moxfield, Archidekt, etc.)
-als "MTGO"-Format. Und ersetzt die test.txt durch eure Deckliste
+als "MTGO"-Format. Und ersetzt die test.txt durch eure Deckliste.
+Man kann auch mehrere Decklisten in das "in" directory legen und das skript arbeitet die sachen automatisch ab.
+Viel Erfolg und Spaß!
+
+## Warnungen
+
+Das skript braucht pro EDH Deck etwa 30 Minuten, ist nicht optimal gehandhabt.
+Man braucht ununterbrochenen internet Zugang.
+
 ## To-Do's
 
 -Filter optionen einstellbar machen

@@ -12,9 +12,10 @@ Sprache: Deutsch, Englisch
 Nicht "Goldbordered".
 
 ## Installation
-
-git clone https://github.com/Varsus808/cardmarket_tournament_app.git
+```git clone https://github.com/Varsus808/cardmarket_tournament_app.git
 pip install -r requirements.txt
+```
+
 
 ## Vor dem ersten gebrauch
 

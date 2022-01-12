@@ -2,8 +2,6 @@
 
 So so so...
 
-Wenn du dich hierher gefunden hast, kommst du wahrscheinlich von dem EDH Fightclub Discord server.
-
 Im folgendem findet sich ein Python-Script, welches die automatisierte Berechnung des billgsten Preises jeder Karte in deiner Deckliste erlaubt.
 
 "Billigste" bedeutet in diesem Kontext: billigster Anbieter, 

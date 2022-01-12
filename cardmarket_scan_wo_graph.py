@@ -1,6 +1,5 @@
 import requests
 import re
-import datetime
 import time
 import os
 import numpy
@@ -100,13 +99,14 @@ def find_lowest_seller(text):
 	
 	return float(lowest_price)
 
-def get_prices(filename):
+def get_prices(filename, in_path, out_path):
 	
-	path = "/home/micha/Downloads/budgetbattle2022/"
-	out_path = path + "out/"
-	
-	file_r = open(path + str(filename), "r")
-	file_w = open(out_path + "tournament_budget_2022_"+str(filename)+".txt", "w+")
+	######YOUR PATH HERE eg. "C:\\Users\\YOUR_NAME\Downloads\\" or
+					#or for linux and max users (? dont know dont use max myself) "/home/YOUR_NAME/Downloads/"
+
+
+	file_r = open(in_path + str(filename), "r")
+	file_w = open(out_path + "checked_"+str(filename), "w+")
 	
 	cardlist, ammount_of_cards = parse_cardlist(file_r)
 	print(cardlist)
@@ -119,6 +119,7 @@ def get_prices(filename):
 
 	total_price = 0
 	num_of_unfound_cards = 0
+	too_expensive_cards = 0
 	unfound_cards = []
 	for i in range(len(urls_of_all_cards)):
 		print("we are at", i+1, "from", len(urls_of_all_cards))
@@ -141,14 +142,9 @@ def get_prices(filename):
 
 		lowest_price, index_of_low = find_lowest_price(ppv_lst)
 		if lowest_price != "Card not found":
-			total_price += float(lowest_price)
+			total_price += float(lowest_price) * ammount_of_cards[i]
 			if lowest_price > 6:
-				file_w.write("#############################\n"+
-							"#############################\n"+
-							"#############################\n"+
-							"#############################\n"+
-							"#############################\n"+
-							"#############################")
+				too_expensive_cards += 1
 		else:
 			num_of_unfound_cards += 1
 			print(num_of_unfound_cards)
@@ -179,9 +175,10 @@ def get_prices(filename):
 				string += '        -"' + elem + '"\n'
 
 		else:		
-			string = 'Your Deck costs:' +' '+ str(total_price) + '\n' + '\n'
-			string += 'All entries were found'
-
+			string += 'Your Deck costs:' +' '+ str(total_price) + '\n\n'
+			string += 'All entries were found' + '\n'
+		if too_expensive_cards > 0:
+			string += str(too_expensive_cards) + 'card(s) exceed the limit of 6 Euros' + '\n'
 		file_w.write(string)
 	else:
 		print("None of the cards in your decklist were found!")
@@ -193,7 +190,19 @@ def readlastline(f):
 	return line
 
 if __name__ == '__main__':
-	get_prices("test.txt")
+
+	path = os.path.abspath(__file__)[:-len(__file__)]
+	
+	if os.name == 'nt':
+		in_path = path + "in\\"
+		out_path = path + "out\\"
+	elif os.name == 'posix':
+		in_path = path + "in/"
+		out_path = path + "out/"
+
+	onlyfiles = [f for f in os.listdir(in_path) if os.path.isfile(os.path.join(in_path, f))]
+	for decklist in onlyfiles:
+		get_prices(decklist, in_path, out_path)
 	
 	'''
 	decklists = []

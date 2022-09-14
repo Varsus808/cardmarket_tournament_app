@@ -12,6 +12,7 @@ Im folgendem findet sich ein Python-Script, welches die automatisierte Berechnun
 ## Installation
 ```sh
 git clone https://github.com/Varsus808/cardmarket_tournament_app.git
+cd cardmarket_tournament_app/
 pip install -r requirements.txt
 ```
 

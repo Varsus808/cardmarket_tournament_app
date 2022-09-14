@@ -1,4 +1,4 @@
-# cardmarket_tournament_app
+# MtG:Cardmarket Deck Price Calculator
 
 
 

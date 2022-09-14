@@ -1,8 +1,8 @@
 # cardmarket_tournament_app
 
-So so so...
 
-Im folgendem findet sich ein Python-Script, welches die automatisierte Berechnung des billgsten Preises jeder Karte in deiner Deckliste erlaubt.
+
+Im folgendem findet sich ein Python-Script, welches die automatisierte Berechnung des billgsten Preises jeder MagicTheGathering Karte in deiner Deckliste erlaubt.
 
 "Billigste" bedeutet in diesem Kontext: billigster Anbieter, 
 - Standort: Deutschland
